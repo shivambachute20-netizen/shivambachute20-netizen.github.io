@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shivam Bachute | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth
+        }
+
+        :root {
+            --bg: #f7f8fc;
+            --white: #fff;
+            --dark: #0f172a;
+            --text: #334155;
+            --muted: #64748b;
+            --blue: #2563eb;
+            --violet: #7c3aed;
+            --cyan: #06b6d4;
+            --line: #e2e8f0;
+            --shadow: 0 24px 70px rgba(15, 23, 42, .10)
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            overflow-x: hidden
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef4ff 45%, #f8fbff 100%);
+            z-index: -1
+        }
+
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            display: grid;
+            place-items: center;
+            z-index: 999;
+            animation: hide 1.2s forwards
+        }
+
+        .loader span {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #e2e8f0;
+            border-top-color: var(--blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes hide {
+            85% {
+                opacity: 1
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden
+            }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(255, 255, 255, .78);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(226, 232, 240, .8)
+        }
+
+        nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 21px;
+            letter-spacing: -.6px
+        }
+
+        .logo span {
+            color: var(--blue)
+        }
+
+        nav a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 14px
+        }
+
+        nav a:hover {
+            color: var(--blue)
+        }
+
+        section {
+            max-width: 1120px;
+            margin: auto;
+            padding: 82px 22px
+        }
+
+        .hero {
+            min-height: auto;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 44px;
+            align-items: center;
+            padding-top: 125px;
+            padding-bottom: 70px
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 8px 13px;
+            color: var(--blue);
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, .08);
+            margin-bottom: 20px
+        }
+
+        h1 {
+            font-size: clamp(34px, 4.6vw, 58px);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            max-width: 720px
+        }
+
+        .grad {
+            background: linear-gradient(90deg, var(--blue), var(--violet), var(--cyan));
+            -webkit-background-clip: text;
+            color: transparent
+        }
+
+        .hero p {
+            font-size: 16.5px;
+            line-height: 1.75;
+            color: var(--muted);
+            margin: 22px 0;
+            max-width: 610px
+        }
+
+        .btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            border: 0;
+            cursor: pointer;
+            text-decoration: none;
+            padding: 13px 19px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--blue), var(--violet));
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 14px 28px rgba(37, 99, 235, .22);
+            transition: .3s
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 45px rgba(37, 99, 235, .35)
+        }
+
+        .btn.alt {
+            background: #fff;
+            color: var(--dark);
+            border: 1px solid var(--line);
+            box-shadow: none
+        }
+
+        .profile-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 14px;
+            box-shadow: 0 20px 55px rgba(15, 23, 42, .11);
+            position: relative;
+            max-width: 430px;
+            margin-left: auto
+        }
+
+        .profile-card::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, .5), rgba(124, 58, 237, .25), rgba(6, 182, 212, .4));
+            border-radius: 36px;
+            z-index: -1;
+            filter: blur(12px);
+            opacity: .45
+        }
+
+        .profile-card img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 22px;
+            display: block
+        }
+
+        .profile-info {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center
+        }
+
+        .profile-info b {
+            font-size: 20px
+        }
+
+        .profile-info p {
+            margin: 4px 0 0;
+            font-size: 14px;
+            color: var(--muted)
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 42px
+        }
+
+        .title h2 {
+            font-size: 34px;
+            letter-spacing: -1.2px
+        }
+
+        .title p {
+            color: var(--muted);
+            margin-top: 10px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .92);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 12px 35px rgba(15, 23, 42, .06);
+            transition: .35s
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: #bfdbfe
+        }
+
+        .card i {
+            font-size: 28px;
+            color: var(--blue);
+            margin-bottom: 14px
+        }
+
+        .card h3 {
+            margin-bottom: 10px
+        }
+
+        .card p {
+            color: var(--muted);
+            line-height: 1.7
+        }
+
+        .bar {
+            height: 9px;
+            background: #e5e7eb;
+            border-radius: 99px;
+            overflow: hidden;
+            margin-top: 16px
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            width: var(--w);
+            background: linear-gradient(90deg, var(--blue), var(--cyan));
+            border-radius: 99px
+        }
+
+        .project img,
+        .gallery img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 18px
+        }
+
+        .tech {
+            color: var(--blue);
+            font-weight: 800;
+            font-size: 13px;
+            margin: 12px 0 18px
+        }
+
+        .small-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--blue);
+            font-weight: 900;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 10px 14px;
+            border-radius: 12px
+        }
+
+        .timeline {
+            max-width: 850px;
+            margin: auto;
+            border-left: 2px solid #cbd5e1;
+            padding-left: 28px
+        }
+
+        .time {
+            position: relative;
+            margin-bottom: 26px
+        }
+
+        .time::before {
+            content: "";
+            position: absolute;
+            left: -38px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            background: var(--blue);
+            border-radius: 50%;
+            box-shadow: 0 0 0 8px #dbeafe
+        }
+
+        .gallery {
+            grid-template-columns: repeat(5, 1fr)
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            text-align: center
+        }
+
+        .stat h3 {
+            font-size: 38px;
+            color: var(--blue)
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 14px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #fff;
+            color: var(--dark);
+            font: inherit
+        }
+
+        .contact textarea {
+            height: 130px
+        }
+
+        .footer {
+            text-align: center;
+            padding: 38px 20px;
+            background: #0f172a;
+            color: #cbd5e1
+        }
+
+        .social i {
+            font-size: 22px;
+            margin: 18px 10px;
+            color: white;
+            transition: .3s
+        }
+
+        .social i:hover {
+            color: #67e8f9;
+            transform: translateY(-4px)
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity .9s ease, transform .9s cubic-bezier(.2, .8, .2, 1)
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: none
+        }
+
+        .typing-text::after {
+            content: '|';
+            margin-left: 4px;
+            color: var(--blue);
+            animation: blink .8s infinite
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0
+            }
+        }
+
+        .profile-card {
+            animation: floatCard 4s ease-in-out infinite
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        .card {
+            animation: softIn .8s ease both
+        }
+
+        @keyframes softIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @media(max-width:900px) {
+
+            .hero,
+            .contact {
+                grid-template-columns: 1fr
+            }
+
+            .grid,
+            .gallery,
+            .stats {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .links {
+                display: none
+            }
+
+            .profile-card img {
+                height: 380px
+            }
+        }
+
+        @media(max-width:560px) {
+
+            .grid,
+            .gallery,
+            .stats {
+                grid-template-columns: 1fr
+            }
+
+            h1 {
+                letter-spacing: -1px
+            }
+
+            section {
+                padding: 75px 18px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader"><span></span></div>
+    <header>
+        <nav>
+            <div class="logo">Shivam<span>.</span></div>
+            <div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a
+                    href="#certifications">Certifications</a><a href="#contact">Contact</a></div>
+        </nav>
+    </header>
+    <section class="hero" id="about">
+        <div class="reveal">
+            <div class="badge"><i class="fa-solid fa-sparkles"></i> Personal Brand Portfolio</div>
+            <h1>Hi, I’m Shivam Bachute — <span class="grad typing-text"></span></h1>
+            <p>From Maharashtra, India. Passionate about technology, AI, entrepreneurship, fitness, sports and
+                creativity. I focus on learning modern skills, building impactful projects and growing a strong personal
+                brand.</p>
+            <div class="btns"><a class="btn" href="#projects">View Projects</a><a class="btn alt"
+                    href="#contact">Contact Me</a><a class="btn alt" href="#">Download Resume</a></div>
+        </div>
+        <div class="profile-card reveal"><img src="shivam.jpeg" alt="Shivam Bachute Profile Photo">
+            <div class="profile-info">
+                <div><b>Shivam Bachute</b>
+                    <p>Maharashtra, India</p>
+                </div><a class="small-btn" href="#contact">Hire / Collaborate</a>
+            </div>
+        </div>
+    </section>
+    <section class="reveal">
+        <div class="stats">
+            <div class="card stat">
+                <h3 data-count="6">0</h3>
+                <p>Projects</p>
+            </div>
+            <div class="card stat">
+                <h3 data-count="9">0</h3>
+                <p>Skills</p>
+            </div>
+            <div class="card stat">
+                <h3 data-count="5">0</h3>
+                <p>Achievements</p>
+            </div>
+            <div class="card stat">
+                <h3 data-count="100">0</h3>
+                <p>Growth Mindset</p>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="reveal">
+        <div class="title">
+            <h2>Skills</h2>
+            <p>Modern personal-brand skills with practical learning focus.</p>
+        </div>
+        <div class="grid">
+            <div class="card"><i class="fa-solid fa-bullhorn"></i>
+                <h3>Digital Marketing</h3>
+                <div class="bar" style="--w:88%"><span></span></div>
+            </div>
+            <div class="card"><i class="fa-solid fa-robot"></i>
+                <h3>AI Tools</h3>
+                <div class="bar" style="--w:85%"><span></span></div>
+            </div>
+            <div class="card"><i class="fa-solid fa-pen-nib"></i>
+                <h3>Canva Designing</h3>
+                <div class="bar" style="--w:90%"><span></span></div>
+            </div>
+            <div class="card"><i class="fa-solid fa-video"></i>
+                <h3>Content Creation</h3>
+                <div class="bar" style="--w:82%"><span></span></div>
+            </div>
+            <div class="card"><i class="fa-solid fa-comments"></i>
+                <h3>Communication</h3>
+                <div class="bar" style="--w:86%"><span></span></div>
+            </div>
+            <div class="card"><i class="fa-solid fa-users"></i>
+                <h3>Team Leadership</h3>
+                <div class="bar" style="--w:80%"><span></span></div>
+            </div>
+            <div class="card"><i class="fa-solid fa-briefcase"></i>
+                <h3>Entrepreneurship</h3>
+                <div class="bar" style="--w:84%"><span></span></div>
+            </div>
+            <div class="card"><i class="fa-solid fa-dumbbell"></i>
+                <h3>Sports & Fitness</h3>
+                <div class="bar" style="--w:92%"><span></span></div>
+            </div>
+            <div class="card"><i class="fa-solid fa-person-chalkboard"></i>
+                <h3>Presentation Skills</h3>
+                <div class="bar" style="--w:87%"><span></span></div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="reveal">
+        <div class="title">
+            <h2>Projects</h2>
+            <p>Clean project cards for AI, marketing, business and presentations.</p>
+        </div>
+        <div class="grid" id="projectGrid"></div>
+    </section>
+    <section class="reveal">
+        <div class="title">
+            <h2>Achievements</h2>
+        </div>
+        <div class="timeline">
+            <div class="time">
+                <h3>Athlete & Javelin Throw Practice</h3>
+                <p>Discipline, consistency and performance mindset through sports training.</p>
+            </div>
+            <div class="time">
+                <h3>College Presentations</h3>
+                <p>Confident communication, research and presentation delivery.</p>
+            </div>
+            <div class="time">
+                <h3>Marketing Assignments</h3>
+                <p>Branding, campaign planning and digital promotion concepts.</p>
+            </div>
+            <div class="time">
+                <h3>AI Learning Journey</h3>
+                <p>Learning AI tools, automation and creative AI project ideas.</p>
+            </div>
+            <div class="time">
+                <h3>Entrepreneurship Ideas</h3>
+                <p>Business model thinking, event ideas and startup mindset.</p>
+            </div>
+        </div>
+    </section>
+    <section id="certifications" class="reveal">
+        <div class="title">
+            <h2>Certifications</h2>
+            <p>Professional certificates and learning achievements.</p>
+        </div>
+        <div class="grid">
+            <div class="card"><i class="fa-solid fa-certificate"></i>
+                <h3>Certificate 1</h3>
+                <p>IESE Business School University of Navarra .</p><br><a
+                    class="small-btn" href="certificate1.jpeg" target="_blank">View Certificate</a>
+            </div>
+            <div class="card"><i class="fa-solid fa-award"></i>
+                <h3>Certificate 2</h3>
+                <p>India Ai.</p><br><a
+                    class="small-btn" href="certificate2.jpeg" target="_blank">View Certificate</a>
+            </div>
+            <div class="card"><i class="fa-solid fa-medal"></i>
+                <h3>Certificate 3</h3>
+                <p>Yuva Ai.</p><br><a
+                    class="small-btn" href="certificate3.jpeg" target="_blank">View Certificate</a>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="reveal">
+        <div class="title">
+            <h2>Contact</h2>
+            <p>Connect for projects, collaborations and ideas.</p>
+        </div>
+        <div class="contact">
+            <div class="card">
+                <p><i class="fa-solid fa-envelope"></i> Email: shivambachute20@gmail.com</p><br>
+                <p><i class="fa-brands fa-instagram"></i> Instagram: @shivam_bachute</p><br>
+                <p><i class="fa-brands fa-linkedin"></i> LinkedIn: Shivam Bachute</p><br>
+                <p><i class="fa-solid fa-phone"></i> Phone: +91 9423376241</p>
+            </div>
+            <form class="card" onsubmit="return false"><input id="name" placeholder="Your Name" required><input
+                    id="email" placeholder="Your Email" required><textarea id="msg" placeholder="Your Message"
+                    required></textarea>
+                <div class="btns"><button class="btn" type="button" onclick="sendMail()">Open Gmail</button><button
+                        class="btn alt" type="button" onclick="sendWhatsApp()">Open WhatsApp</button></div>
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        <h2>“Dream Big. Build Bigger.”</h2>
+        <div class="social"><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-linkedin"></i><i
+                class="fa-brands fa-github"></i><i class="fa-brands fa-x-twitter"></i></div>
+        <p>© 2026 Shivam Bachute. Personal Brand Portfolio.</p>
+    </footer>
+    <script>
+        const projects = [['AI Assistant for Shoe Recommendations', 'A smart AI-based assistant that helps users find the best shoes based on style, budget, size, occasion and personal preferences.', 'AI Assistant, Recommendation System, Chatbot, UI Design', 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80']];
+        document.getElementById('projectGrid').innerHTML = projects.map(p => `<div class="card project"><img src="${p[3]}" alt="${p[0]}"><h3>${p[0]}</h3><p>${p[1]}</p><ul style="color:var(--muted);line-height:1.8;margin:14px 0 16px 18px"><li>Personalized shoe suggestions</li><li>Budget and size based filtering</li><li>Occasion-based recommendations</li><li>Simple chatbot-style user interaction</li><li>Modern product recommendation UI</li></ul><div class="tech">${p[2]}</div><a href="#" class="small-btn">View Project</a></div>`).join('');
+        const typingWords = ['AI Enthusiast.', 'Marketing Learner.', 'Fitness Driven.', 'Future Entrepreneur.']; let wordIndex = 0, charIndex = 0, isDeleting = false; const typingEl = document.querySelector('.typing-text'); function typeEffect() { const current = typingWords[wordIndex]; typingEl.textContent = isDeleting ? current.substring(0, charIndex--) : current.substring(0, charIndex++); if (!isDeleting && charIndex > current.length + 8) isDeleting = true; if (isDeleting && charIndex < 0) { isDeleting = false; wordIndex = (wordIndex + 1) % typingWords.length } setTimeout(typeEffect, isDeleting ? 55 : 95) } typeEffect();
+        const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active') }), { threshold: .15 }); document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        let counted = false; function count() { if (counted) return; document.querySelectorAll('[data-count]').forEach(el => { let t = +el.dataset.count, c = 0; let i = setInterval(() => { c += Math.ceil(t / 35); if (c >= t) { c = t; clearInterval(i) } el.textContent = c + (t === 100 ? '%' : '') }, 35) }); counted = true } window.addEventListener('scroll', () => { if (scrollY > 220) count() });
+        function getFormData() { const name = document.getElementById('name').value; const email = document.getElementById('email').value; const msg = document.getElementById('msg').value; return { name, email, msg, text: `Hello Shivam, I am ${name}. My email is ${email}. Message: ${msg}` } }
+        function sendMail() { const d = getFormData(); const subject = `Portfolio Contact from ${d.name}`; const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=shivambachute20@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(d.text)}`; window.open(gmailUrl, '_blank') }
+        function sendWhatsApp() { const d = getFormData(); window.open(`https://wa.me/919423376241?text=${encodeURIComponent(d.text)}`, '_blank') }
+    </script>
+</body>
+
+</html>
